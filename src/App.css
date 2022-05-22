@@ -1,38 +1,151 @@
-.App {
-  text-align: center;
+* {
+  font-family: Helvetica, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* It is used for debugging layout manually :v */
+.tes {
+  border: 1px solid red;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ul li {
+  list-style-type: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* html{
+  filter: brightness(80%);
+} */
+
+/* ------------------------------------------- NAVBAR + HEADER ------------------------------------------- */
+
+/* .hero {
+  background: #f1f3ff;
+} */
+
+.logo {
+  width: 100px;
+  height: 34px;
+  line-height: 26px;
+  background: #0d28a6;
+}
+
+.btn-rent-car {
+  background-color: #5cb85f;
   color: white;
+  padding: 8px 12px;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  border: 1px solid #5cb85f;
+  transition: 0.3s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-rent-car:hover {
+  border: 1px solid #5cb85f;
+  background-color: white;
+  color: #5cb85f;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero-desc h1 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 150%;
+}
+
+.hero-desc p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* ------------------------------------------- WHY US ------------------------------------------- */
+#why .row div {
+  transition: 0.2s;
+}
+#why .row div:hover {
+  transform: scale(1.01);
+}
+
+/* ------------------------------------------- CAROUSEL ------------------------------------------- */
+
+.item {
+  background: #f1f3ff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  border: 0 10px;
+  padding-top: 60px;
+}
+
+.user {
+  font-weight: 700;
+}
+
+/* ------------------------------------------- BANNER ------------------------------------------- */
+#banner {
+  background: #0d28a6;
+  border-radius: 13px;
+}
+
+#banner p {
+  max-width: 468px;
+  font-size: 14px;
+}
+
+/* ------------------------------------------- FREQUENTLY ASKED QUESTION ------------------------------------------- */
+
+#FAQ h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+#FAQ p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* ------------------------------------------- FOOTER ------------------------------------------- */
+
+#address p {
+  font-size: 14px;
+}
+
+#fiture a {
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.social-media img {
+  margin-right: 8px;
+}
+
+/* SEACRH BUTTON */
+
+#searchColumn {
+  margin-top: -55px;
+}
+
+/* dark background */
+.filter {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 60px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.car-desc {
+  min-height: 72px;
+  overflow-y: hidden;
 }
