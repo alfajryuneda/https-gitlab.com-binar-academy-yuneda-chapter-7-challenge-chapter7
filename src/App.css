@@ -149,3 +149,23 @@ body {
   min-height: 72px;
   overflow-y: hidden;
 }
+
+/* Responsive for owl carousel */
+@media (max-width: 992px) {
+  .owl-theme {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .rating div {
+    justify-content: center;
+  }
+  .user {
+    text-align: center;
+  }
+  .avatar {
+    margin-bottom: 16px;
+  }
+  .rating .star {
+    margin-bottom: 16px;
+  }
+}

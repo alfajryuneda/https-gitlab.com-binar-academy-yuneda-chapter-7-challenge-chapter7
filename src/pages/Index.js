@@ -1,8 +1,10 @@
 import React from "react";
+import Hello from "../components/Carousel2";
 
 const Index = () => {
   return (
     <>
+      {/* START NAVBAR */}
       <div className="hero fixed-top bg-light">
         <div className="container py-1">
           <nav className="navbar navbar-expand-lg navbar-light">
@@ -252,6 +254,188 @@ const Index = () => {
         </div>
       </div>
       {/* END WHY US */}
+      {/* START OWL CAROUSEL */}
+      <div
+        className="container mt-5 pt-5 d-flex flex-column justify-content-center"
+        id="testimonial"
+      >
+        <h2 className="text-center mb-3 fw-bold pt-4">Testimonial</h2>
+        <p className="text-center mb-4">
+          Berbagai review positif dari para pelanggan kami
+        </p>
+      </div>
+      {/* <div className="owl-carousel owl-theme">
+        <div className="item p-4">
+          <div className="d-flex align-items-center justify-content-around">
+            <div className="row">
+              <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center">
+                <div className="avatar">
+                  <img
+                    src="./assets/ig-img.jpg"
+                    alt=""
+                    style={{ width: "80px", borderRadius: "50%" }}
+                    className="mx-auto"
+                  />
+                </div>
+              </div>
+              <div className="col-lg-9 col">
+                <div className="rating">
+                  <div className="star d-flex flex-row">
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                  </div>
+                  <p className="mt-2">
+                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod”
+                  </p>
+                  <div className="user">
+                    <span>Ash 20, Singapore</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="item p-4">
+          <div className="d-flex align-items-center justify-content-around">
+            <div className="row">
+              <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center">
+                <div className="avatar">
+                  <img
+                    src="./assets/img_photo.png"
+                    alt=""
+                    style={{ width: "80px" }}
+                    className="mx-auto"
+                  />
+                </div>
+              </div>
+              <div className="col-lg-9 col">
+                <div className="rating">
+                  <div className="star d-flex flex-row">
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                  </div>
+                  <p className="mt-2">
+                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod”
+                  </p>
+                  <div className="user">
+                    <span>Max 21, USA</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="item p-4">
+          <div className="d-flex align-items-center justify-content-around">
+            <div className="row">
+              <div className="col-lg-3 col-12 d-flex justify-content-center align-items-center">
+                <div className="avatar">
+                  <img
+                    src="./assets/img_photo1.png"
+                    alt=""
+                    style={{ width: "80px" }}
+                    className="mx-auto"
+                  />
+                </div>
+              </div>
+              <div className="col-lg-9 col">
+                <div className="rating">
+                  <div className="star d-flex flex-row">
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                    <img
+                      src="./assets/star.png"
+                      alt=""
+                      style={{ width: "16px" }}
+                    />
+                  </div>
+                  <p className="mt-2">
+                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod”
+                  </p>
+                  <div className="user">
+                    <span>Misha 28, Malaysia</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> */}
+      {<Hello />}
+      {/* END OWL CAROUSEL */}
       {/* START BANNER */}
       <div className="container mt-5">
         <div
