@@ -27,7 +27,7 @@ const Footer = () => {
             FAQ
           </a>
         </div>
-        <div id className="col-lg-3 col-md-6 col-12 mb-2">
+        <div className="col-lg-3 col-md-6 col-12 mb-2">
           <p>Connect with us</p>
           <div className="social-media">
             <a href="https://www.facebook.com/binaracademy/">

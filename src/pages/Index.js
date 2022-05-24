@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "../components/molecules/navbar/Navbar";
-import Sidebar from "../components/molecules/sidebar/Sidebar";
 import Hero from "../components/molecules/hero/Hero";
 import Services from "../components/molecules/services/Services";
 import Carousel from "../components/molecules/carousel/Carousel";

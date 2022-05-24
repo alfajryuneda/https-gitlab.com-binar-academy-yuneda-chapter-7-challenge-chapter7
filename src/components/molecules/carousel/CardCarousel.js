@@ -2,8 +2,8 @@ import React from "react";
 
 const CardCarousel = () => {
   return (
-    <div class="item p-4 ">
-      <div class="row justify-content-center align-items-center ">
+    <div className="item p-4 ">
+      <div className="row justify-content-center align-items-center ">
         <div className="col-3">
           <img
             src="./assets/img_photo1.png"

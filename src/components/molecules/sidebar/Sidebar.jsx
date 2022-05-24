@@ -21,27 +21,27 @@ const Sidebar = () => {
       </div>
       <div className="offcanvas-body pt-0">
         <ul className="navbar-nav pt-0">
-          <li className>
+          <li>
             <a className="nav-link active" aria-current="page" href="#serv">
               <span className="text-black">Our Services</span>
             </a>
           </li>
-          <li className>
+          <li>
             <a className="nav-link" href="#why">
               <span className="text-black">Why Us</span>
             </a>
           </li>
-          <li className>
+          <li>
             <a className="nav-link" href="#testimonial">
               <span className="text-black">Testimonial</span>
             </a>
           </li>
-          <li className>
+          <li>
             <a className="nav-link" href="#FAQ">
               <span className="text-black">FAQ</span>
             </a>
           </li>
-          <li className>
+          <li>
             <a href="/cars" className="btn-rent-car">
               Register
             </a>

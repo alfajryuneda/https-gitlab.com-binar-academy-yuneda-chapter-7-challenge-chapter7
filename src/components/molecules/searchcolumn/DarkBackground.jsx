@@ -18,7 +18,7 @@ const DarkBackground = () => {
     <div
       className="filter"
       id="filter"
-      onClick="inactiveDarkBackground()"
+      // onClick="inactiveDarkBackground()"
       style={{ ...filterStyle, width: "0" }}
     />
   );
