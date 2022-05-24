@@ -1,13 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import CardCarousel from "./CardCarousel";
+import "./Carousel.css";
 
-const options = {
-  items: 4,
-};
 class Carousel extends React.Component {
   render() {
     return (

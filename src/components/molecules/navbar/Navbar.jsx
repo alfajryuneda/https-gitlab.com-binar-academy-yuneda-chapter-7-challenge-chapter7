@@ -6,7 +6,9 @@ const Navbar = () => {
       <div className="container py-1">
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
-            <a className="navbar-brand logo text-white text-center">YUNEDA</a>
+            <div className="navbar-brand logo text-white text-center">
+              YUNEDA
+            </div>
             <button
               className="navbar-toggler"
               type="button"
@@ -21,9 +23,9 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page">
+                  <div className="nav-link active" aria-current="page">
                     <span>Our Services</span>
-                  </a>
+                  </div>
                 </li>
                 <li className="nav-item  ms-2">
                   <a

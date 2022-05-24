@@ -1,0 +1,10 @@
+/* ------------------------------------------- BANNER ------------------------------------------- */
+#banner {
+  background: #0d28a6;
+  border-radius: 13px;
+}
+
+#banner p {
+  max-width: 468px;
+  font-size: 14px;
+}

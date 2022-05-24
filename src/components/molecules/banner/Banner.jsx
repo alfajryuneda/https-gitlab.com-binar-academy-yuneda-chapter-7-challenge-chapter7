@@ -1,4 +1,5 @@
 import React from "react";
+import "./Banner.css";
 
 const Banner = () => {
   return (
@@ -14,9 +15,9 @@ const Banner = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        <a href="/cars" className="btn-rent-car mb-4 text-decoration-none">
+        <button className="btn-rent-car mb-4 text-decoration-none">
           Mulai Sewa Mobil
-        </a>
+        </button>
       </div>
     </div>
   );
