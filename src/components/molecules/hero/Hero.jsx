@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Hero = ({ showbtn }) => {
   return (
@@ -15,9 +16,11 @@ const Hero = ({ showbtn }) => {
             untuk sewa mobil selama 24 jam.
           </p>
           {showbtn && (
-            <a href="/cars" className="btn-rent-car text-decoration-none">
-              Mulai Sewa Mobil
-            </a>
+            <Link to="/car">
+              <button className="btn-rent-car text-decoration-none">
+                Mulai Sewa Mobil
+              </button>
+            </Link>
           )}
         </div>
         <div className="col-lg-6 col-sm-12">
