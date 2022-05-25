@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   selectAllCars,
@@ -11,38 +11,29 @@ import "./Search.css";
 import { carlist } from "../../../store/data";
 import ListCar from "./ListCar";
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-const filteredCar = carlist.map((car) => {
-  const isPositive = getRandomInt(0, 1) === 1;
-  const timeAt = new Date();
-  const mutator = getRandomInt(1000000, 100000000);
-  const availableAt = new Date(
-    timeAt.getTime() + (isPositive ? mutator : -1 * mutator)
-  );
-
-  return {
-    ...car,
-    availableAt,
-  };
-});
-
 const SearchColumn = () => {
   const cars = useSelector(selectAllCars);
   const carStatus = useSelector(getCarsStatus);
   const error = useSelector(getCarsError);
+  const [carList, setCarList] = useState([]);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [capacity, setCapacity] = useState("");
+  const [showdata, setShowData] = useState(false);
 
   let result;
+  let emptyChecker;
   if (carStatus === "loading") {
     console.log("loading");
     result = <p>"Loading..."</p>;
   } else if (carStatus === "succeeded") {
     console.log("sukses");
-    result = cars.map((car) => (
+    let filteredCars = cars;
+    emptyChecker = [date, time, capacity].every(Boolean) && showdata == true;
+    if (emptyChecker) {
+      filteredCars = cars.filter((car) => car.capacity > capacity);
+    }
+    result = filteredCars.map((car) => (
       <div key={car.id}>
         <div className="carContainer align-items-stretch">
           <div className="card p-3">
@@ -97,10 +88,27 @@ const SearchColumn = () => {
     result = <p>{error}</p>;
   }
 
-  const [date, setDate] = useState("");
   const dateHandler = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    setTime(e.target.value);
+    setShowData(false);
+  };
+  const timeHandler = (e) => {
+    e.preventDefault();
     console.log(e.target.value);
     setDate(e.target.value);
+    setShowData(false);
+  };
+  const capacityHandler = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    setCapacity(e.target.value);
+    setShowData(false);
+  };
+  const onSaveHandler = () => {
+    console.log(emptyChecker);
+    setShowData(true);
   };
   return (
     <>
@@ -116,7 +124,7 @@ const SearchColumn = () => {
           // onclick="activeDarkBackground()"
         >
           <div className="row">
-            <div className="col-lg-2 col-sm-6 col-12">
+            <div id="driver-type" className="col-lg-2 col-sm-6 col-12">
               <div>
                 <label>Tipe Driver</label>
               </div>
@@ -141,17 +149,20 @@ const SearchColumn = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-2 col-sm-6 col-12">
+            <div id="date-input" className="col-lg-2 col-sm-6 col-12">
               <label htmlFor="inputDate">Tanggal</label>
               <input
                 id="inputDate"
                 className="form-control"
                 type="date"
-                value={date}
+                // value={date}
                 onChange={dateHandler}
               />
             </div>
-            <div className="col-lg-3 col-sm-6 col-12  form-group has-feedback">
+            <div
+              id="time-input"
+              className="col-lg-3 col-sm-6 col-12  form-group has-feedback"
+            >
               <label htmlFor="inputTime">Waktu Jemput/ Ambil</label>
               <input
                 step={0}
@@ -159,9 +170,11 @@ const SearchColumn = () => {
                 className="form-control"
                 type="time"
                 placeholder="Pilih Waktu"
+                // value={time}
+                onChange={timeHandler}
               />
             </div>
-            <div className="col-lg-3 col-sm-6 col-12">
+            <div id="capacity-input" className="col-lg-3 col-sm-6 col-12">
               <label htmlFor="startDate">Jumlah Penumpang</label>
               <div className="input-group mb-3">
                 <input
@@ -172,18 +185,24 @@ const SearchColumn = () => {
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                   aria-placeholder="Pilih Waktu"
+                  value={capacity}
+                  onChange={capacityHandler}
                 />
               </div>
             </div>
             <div className="col-lg-2 col-sm-12 col-12 d-flex justify-content-center align-self-center">
-              <button id="submitBtn" className="btn-rent-car w-100">
+              <button
+                id="submitBtn"
+                onClick={onSaveHandler}
+                className="btn-rent-car w-100"
+              >
                 Cari Mobil
               </button>
             </div>
           </div>
         </div>
       </div>
-      <ListCar>{result}</ListCar>
+      <ListCar>{showdata && result}</ListCar>
     </>
   );
 };
