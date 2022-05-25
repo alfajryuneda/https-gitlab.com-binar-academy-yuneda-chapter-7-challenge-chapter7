@@ -21,8 +21,6 @@ const SearchColumn = () => {
   const cars = useSelector(selectAllCars);
   const carStatus = useSelector(getCarsStatus);
   const error = useSelector(getCarsError);
-  // const [carList, setCarList] = useState([]);
-  // let carList = [];
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [capacity, setCapacity] = useState("");
@@ -38,7 +36,13 @@ const SearchColumn = () => {
     let filteredCars = cars;
     emptyChecker = [date, time, capacity].every(Boolean) && showdata == true;
     if (emptyChecker) {
-      filteredCars = cars.filter((car) => car.capacity > capacity);
+      let inputDateTime = time + "T" + date + "Z";
+      console.log(inputDateTime);
+      filteredCars = cars.filter(
+        (car) =>
+          car.capacity > capacity &&
+          Date.parse(car.availableAt) > Date.parse(inputDateTime)
+      );
     }
     result = filteredCars.map((car) => (
       <div key={car.id}>
@@ -97,7 +101,7 @@ const SearchColumn = () => {
 
   const dateHandler = (e) => {
     e.preventDefault();
-    console.log(Date.parse(e.target.value));
+    console.log(e.target.value);
     setTime(e.target.value);
     setShowData(false);
   };
@@ -172,7 +176,7 @@ const SearchColumn = () => {
             >
               <label htmlFor="inputTime">Waktu Jemput/ Ambil</label>
               <input
-                step={0}
+                step={1}
                 id="inputTime"
                 className="form-control"
                 type="time"
