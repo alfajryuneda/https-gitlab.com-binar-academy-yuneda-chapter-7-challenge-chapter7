@@ -10,21 +10,30 @@ const initialState = {
   error: null,
 };
 
+function randomDate(start, end) {
+  return new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  );
+}
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const filteredCar = (data) => {
-  data.map((car) => {
+const populateCars = (cars) => {
+  return cars.map((car) => {
     const isPositive = getRandomInt(0, 1) === 1;
     const timeAt = new Date();
     const mutator = getRandomInt(1000000, 100000000);
-    const availableAt = new Date(
-      timeAt.getTime() + (isPositive ? mutator : -1 * mutator)
-    );
-
+    // const availableAt = new Date(
+    //   timeAt.getTime() + (isPositive ? mutator : -1 * mutator)
+    // ).toDateString();
+    const availableAt = randomDate(
+      new Date(2022, 5, 1),
+      new Date(2022, 6, 30)
+    ).toISOString();
+    // console.log(availableAt);
     return {
       ...car,
       availableAt,
@@ -33,22 +42,15 @@ const filteredCar = (data) => {
 };
 
 export const fetchCars = createAsyncThunk("cars/fetchCars", async () => {
-  let response = await axios.get(CARS_URL);
-  // let hasilfilter = response.data;
-  // hasilfilter = hasilfilter.map((car) => {
-  //   const isPositive = getRandomInt(0, 1) === 1;
-  //   const timeAt = new Date();
-  //   const mutator = getRandomInt(1000000, 100000000);
-  //   const availableAt = new Date(
-  //     timeAt.getTime() + (isPositive ? mutator : -1 * mutator)
-  //   );
-  //   return {
-  //     ...car,
-  //     availableAt,
-  //   };
-  // });
-  // console.log(hasilfilter);
-  return response.data;
+  // let response = await axios.get(CARS_URL);
+  // return response.data;
+  try {
+    let response = await axios.get(CARS_URL);
+    response = await populateCars(response.data);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 const carsSlice = createSlice({
@@ -63,17 +65,7 @@ const carsSlice = createSlice({
       .addCase(fetchCars.fulfilled, (state, action) => {
         state.status = "succeeded";
         let loadedCars = action.payload;
-        // loadedCars = loadedCars.map((car) => {
-        //   const availableAt = new Date(
-        //     new Date(2012, 0, 1).getTime() +
-        //       Math.random() *
-        //         (new Date().getTime() - new Date(2012, 0, 1).getTime())
-        //   );
-        //   return {
-        //     ...car,
-        //     availableAt,
-        //   };
-        // });
+        // let loadedCars = populateCars(action.payload);
         state.cars = state.cars.concat(loadedCars);
       })
       .addCase(fetchCars.rejected, (state, action) => {

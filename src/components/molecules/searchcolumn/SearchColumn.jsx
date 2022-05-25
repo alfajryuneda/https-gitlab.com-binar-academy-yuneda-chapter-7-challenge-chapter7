@@ -5,17 +5,24 @@ import {
   getCarsError,
   getCarsStatus,
 } from "../../../features/cars/carsSlice";
+// import { filteringCar, getRandomInt } from "../../../helper";
 
 import DarkBackground from "./DarkBackground";
 import "./Search.css";
-import { carlist } from "../../../store/data";
 import ListCar from "./ListCar";
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 const SearchColumn = () => {
   const cars = useSelector(selectAllCars);
   const carStatus = useSelector(getCarsStatus);
   const error = useSelector(getCarsError);
-  const [carList, setCarList] = useState([]);
+  // const [carList, setCarList] = useState([]);
+  // let carList = [];
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [capacity, setCapacity] = useState("");
@@ -90,7 +97,7 @@ const SearchColumn = () => {
 
   const dateHandler = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    console.log(Date.parse(e.target.value));
     setTime(e.target.value);
     setShowData(false);
   };
