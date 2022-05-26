@@ -13,13 +13,19 @@ const filterStyle = {
   backgroundColor: "rgba(0, 0, 0, 0.6)",
 };
 
-const DarkBackground = () => {
+const DarkBackground = (props) => {
+  let darkBg;
+  if (props.dark === true) {
+    darkBg = "100%";
+  } else {
+    darkBg = "0";
+  }
   return (
     <div
       className="filter"
       id="filter"
       // onClick="inactiveDarkBackground()"
-      style={{ ...filterStyle, width: "0" }}
+      style={{ ...filterStyle, width: darkBg }}
     />
   );
 };

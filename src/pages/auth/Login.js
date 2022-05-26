@@ -5,7 +5,7 @@ import {
   TokenResponse,
 } from "@react-oauth/google";
 
-import { parseJwt } from "../helper/parseJWT";
+import { parseJwt } from "../../helper";
 
 const Login = () => {
   return (

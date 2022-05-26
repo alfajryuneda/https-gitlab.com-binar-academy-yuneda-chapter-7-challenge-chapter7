@@ -16,7 +16,7 @@ const Hero = ({ showbtn }) => {
             untuk sewa mobil selama 24 jam.
           </p>
           {showbtn && (
-            <Link to="/car">
+            <Link to="/search">
               <button className="btn-rent-car text-decoration-none">
                 Mulai Sewa Mobil
               </button>

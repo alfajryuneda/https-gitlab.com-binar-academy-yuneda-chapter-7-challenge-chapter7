@@ -1,15 +1,22 @@
 import React from "react";
-import Hero from "../components/molecules/hero/Hero";
-import Services from "../components/molecules/services/Services";
-import Carousel from "../components/molecules/carousel/Carousel";
-import Why from "../components/molecules/why/Why";
-import Banner from "../components/molecules/banner/Banner";
-import Faq from "../components/molecules/faq/Faq";
-import Footer from "../components/molecules/footer/Footer";
+import Navbar from "../../components/navbar/Navbar";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Hero from "../../components/hero/Hero";
+import Services from "../../components/services/Services";
+import Carousel from "../../components/carousel/Carousel";
+import Why from "../../components/why/Why";
+import Banner from "../../components/banner/Banner";
+import Faq from "../../components/faq/Faq";
+import Footer from "../../components/footer/Footer";
 
 const Index = () => {
   return (
     <>
+      {/* START NAVBAR */}
+      <Navbar fix={true} />
+      {/* Offcanvas for sidebar */}
+      <Sidebar />
+      {/* END NAVBAR */}
       {/* START HERO DESCRIPTION */}
       <Hero showbtn={true} />
       {/* END HERO DESCRIPTION */}

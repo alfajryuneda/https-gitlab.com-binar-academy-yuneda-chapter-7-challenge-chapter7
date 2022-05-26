@@ -4,7 +4,7 @@ import {
   selectAllCars,
   getCarsError,
   getCarsStatus,
-} from "../../../features/cars/carsSlice";
+} from "../../redux/carsSlice";
 // import { filteringCar, getRandomInt } from "../../../helper";
 
 import DarkBackground from "./DarkBackground";
@@ -25,6 +25,7 @@ const SearchColumn = () => {
   const [time, setTime] = useState("");
   const [capacity, setCapacity] = useState("");
   const [showdata, setShowData] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   let result;
   let emptyChecker;
@@ -99,6 +100,11 @@ const SearchColumn = () => {
     result = <p>{error}</p>;
   }
 
+  // const darkHandler = (e) => {
+  //   e.preventDefault();
+  //   setIsDark(!isDark);
+  //   // console.log("dark");
+  // };
   const dateHandler = (e) => {
     e.preventDefault();
     console.log(e.target.value);
@@ -132,6 +138,7 @@ const SearchColumn = () => {
         <div
           id="searchColumn"
           className="card-search card p-3"
+          // onClick={darkHandler}
           // onclick="activeDarkBackground()"
         >
           <div className="row">
@@ -205,6 +212,10 @@ const SearchColumn = () => {
               <button
                 id="submitBtn"
                 onClick={onSaveHandler}
+                onMouseLeave={(e) => {
+                  e.preventDefault();
+                  setIsDark(false);
+                }}
                 className="btn-rent-car w-100"
               >
                 Cari Mobil

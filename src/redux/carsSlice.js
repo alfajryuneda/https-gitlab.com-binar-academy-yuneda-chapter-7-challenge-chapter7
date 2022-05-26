@@ -30,8 +30,8 @@ const populateCars = (cars) => {
     //   timeAt.getTime() + (isPositive ? mutator : -1 * mutator)
     // ).toDateString();
     const availableAt = randomDate(
-      new Date(2022, 5, 1),
-      new Date(2022, 6, 30)
+      new Date(2022, 5, 25),
+      new Date(2022, 6, 5)
     ).toISOString();
     // console.log(availableAt);
     return {

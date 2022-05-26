@@ -2,20 +2,17 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import Car from "./pages/Car";
-import MainLayout from "./mainlayout/MainLayout";
-import Login from "./pages/Login";
+import Index from "./pages/home/Index";
+import SearchPage from "./pages/search/Search";
+import Login from "./pages/auth/Login";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index path="/" element={<Index />} />
-          <Route path="/car" element={<Car />} />
-          <Route path="/login" element={<Login />} />
-        </Route>
+        <Route path="/" element={<Index />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

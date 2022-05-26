@@ -1,8 +1,14 @@
 import React from "react";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  let navStyle = "";
+  if (props.fix === true) {
+    navStyle = "hero fixed-top bg-light";
+  } else {
+    navStyle = "hero";
+  }
   return (
-    <div className="hero fixed-top bg-light">
+    <div className={navStyle}>
       <div className="container py-1">
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
