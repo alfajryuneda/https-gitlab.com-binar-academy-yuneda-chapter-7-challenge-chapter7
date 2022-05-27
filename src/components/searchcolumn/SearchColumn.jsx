@@ -1,120 +1,47 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   selectAllCars,
   getCarsError,
   getCarsStatus,
 } from "../../redux/carsSlice";
-// import { filteringCar, getRandomInt } from "../../../helper";
+import { fetchCars } from "../../redux/carsSlice";
 
 import DarkBackground from "./DarkBackground";
 import "./Search.css";
 import ListCar from "./ListCar";
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+import CardCar from "./CardCar";
 
 const SearchColumn = () => {
   const cars = useSelector(selectAllCars);
   const carStatus = useSelector(getCarsStatus);
   const error = useSelector(getCarsError);
+  const [driver, setDriver] = useState("withDriver");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [capacity, setCapacity] = useState("");
   const [showdata, setShowData] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const dispatch = useDispatch();
 
-  let result;
-  let emptyChecker;
-  if (carStatus === "loading") {
-    console.log("loading");
-    result = <p>"Loading..."</p>;
-  } else if (carStatus === "succeeded") {
-    console.log("sukses");
-    let filteredCars = cars;
-    emptyChecker = [date, time, capacity].every(Boolean) && showdata == true;
-    if (emptyChecker) {
-      let inputDateTime = time + "T" + date + "Z";
-      console.log(inputDateTime);
-      filteredCars = cars.filter(
-        (car) =>
-          car.capacity > capacity &&
-          Date.parse(car.availableAt) > Date.parse(inputDateTime)
-      );
-    }
-    result = filteredCars.map((car) => (
-      <div key={car.id}>
-        <div className="carContainer align-items-stretch">
-          <div className="card p-3">
-            <div className="image-card">
-              <img
-                src={car.image}
-                className="w-100"
-                alt=""
-                style={{ maxHeight: "180px", objectFit: "cover" }}
-              />
-            </div>
-            <div>
-              <p className="fw-bold mt-1">
-                {car.manufacture}/{car.model}
-              </p>
-            </div>
-            <div>
-              <h5 className="fw-bolder">Rp. {car.rentPerDay} / hari</h5>
-            </div>
-            <div>
-              <p className="car-desc">
-                {" "}
-                {car.description != ""
-                  ? car.description
-                  : "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet mollitia exercitationem vel iure! Eligendi, delectus."}
-              </p>
-            </div>
-            <div>
-              <span>
-                <i className="bi bi-people me-3"></i>
-                {car.capacity} Orang
-              </span>
-            </div>
-            <div>
-              <span>
-                <i className="bi bi-gear me-3"></i>
-                {car.transmission}
-              </span>
-            </div>
-            <div>
-              <span>
-                <i className="bi bi-calendar me-3"></i>Tahun {car.availableAt}
-              </span>
-            </div>
-            <button className="btn btn-success"> Pilih Mobil</button>
-          </div>
-        </div>
-      </div>
-    ));
-  } else if (carStatus === "failed") {
-    console.log("gagal");
-    result = <p>{error}</p>;
-  }
+  const showBtn = [date.length > 0, time.length > 0].every(Boolean);
 
-  // const darkHandler = (e) => {
-  //   e.preventDefault();
-  //   setIsDark(!isDark);
-  //   // console.log("dark");
-  // };
+  const driverHandler = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    setDriver(e.target.value);
+    setShowData(false);
+  };
   const dateHandler = (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    setTime(e.target.value);
+    setDate(e.target.value);
     setShowData(false);
   };
   const timeHandler = (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    setDate(e.target.value);
+    setTime(e.target.value);
     setShowData(false);
   };
   const capacityHandler = (e) => {
@@ -124,8 +51,14 @@ const SearchColumn = () => {
     setShowData(false);
   };
   const onSaveHandler = () => {
-    console.log(emptyChecker);
     setShowData(true);
+    const passenger = capacity ? capacity : "0";
+    console.log(driver);
+    const filter = { date, time, passenger, driver };
+    if (showBtn) {
+      dispatch(fetchCars(filter));
+    }
+    // console.log(error);
   };
   return (
     <>
@@ -146,26 +79,21 @@ const SearchColumn = () => {
               <div>
                 <label>Tipe Driver</label>
               </div>
-              <div className="dropdown">
-                <button
-                  className="btn btn-outline-success dropdown-toggle w-100"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+              <select
+                className="form-select form-select-md mb-3"
+                aria-label=".form-select-lg example"
+                value={driver}
+                onChange={driverHandler}
+              >
+                <option disabled hidden>
                   Pilih Tipe Driver
-                </button>
-                <ul className="dropdown-menu">
-                  <li>
-                    <p className="dropdown-item">Dengan Sopir</p>
-                  </li>
-                  <li>
-                    <p className="dropdown-item" href="#">
-                      Tanpa Sopir (Lepas Kunci)
-                    </p>
-                  </li>
-                </ul>
-              </div>
+                </option>
+                <option value="withDriver2" hidden>
+                  Dengan Sopir
+                </option>
+                <option value="withDriver">Dengan Sopir</option>
+                <option value="noDriver">Tanpa Sopir (Lepas Kunci)</option>
+              </select>
             </div>
             <div id="date-input" className="col-lg-2 col-sm-6 col-12">
               <label htmlFor="inputDate">Tanggal</label>
@@ -173,7 +101,7 @@ const SearchColumn = () => {
                 id="inputDate"
                 className="form-control"
                 type="date"
-                // value={date}
+                value={date}
                 onChange={dateHandler}
               />
             </div>
@@ -188,7 +116,7 @@ const SearchColumn = () => {
                 className="form-control"
                 type="time"
                 placeholder="Pilih Waktu"
-                // value={time}
+                value={time}
                 onChange={timeHandler}
               />
             </div>
@@ -211,6 +139,7 @@ const SearchColumn = () => {
             <div className="col-lg-2 col-sm-12 col-12 d-flex justify-content-center align-self-center">
               <button
                 id="submitBtn"
+                // disabled={!showBtn}
                 onClick={onSaveHandler}
                 onMouseLeave={(e) => {
                   e.preventDefault();
@@ -224,7 +153,12 @@ const SearchColumn = () => {
           </div>
         </div>
       </div>
-      <ListCar>{showdata && result}</ListCar>
+      <ListCar>
+        {showdata && date.length == 0 && <p>Ngga boleh kosong</p>}
+        {date.length != 0 && time.length != 0 && cars && (
+          <CardCar cars={cars} />
+        )}
+      </ListCar>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { populateCars, filteringCar } from "../helper";
 
 const CARS_URL =
   "https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json";
@@ -10,43 +11,14 @@ const initialState = {
   error: null,
 };
 
-function randomDate(start, end) {
-  return new Date(
-    start.getTime() + Math.random() * (end.getTime() - start.getTime())
-  );
-}
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-const populateCars = (cars) => {
-  return cars.map((car) => {
-    const isPositive = getRandomInt(0, 1) === 1;
-    const timeAt = new Date();
-    const mutator = getRandomInt(1000000, 100000000);
-    // const availableAt = new Date(
-    //   timeAt.getTime() + (isPositive ? mutator : -1 * mutator)
-    // ).toDateString();
-    const availableAt = randomDate(
-      new Date(2022, 5, 25),
-      new Date(2022, 6, 5)
-    ).toISOString();
-    // console.log(availableAt);
-    return {
-      ...car,
-      availableAt,
-    };
-  });
-};
-
-export const fetchCars = createAsyncThunk("cars/fetchCars", async () => {
-  // let response = await axios.get(CARS_URL);
-  // return response.data;
+export const fetchCars = createAsyncThunk("cars/fetchCars", async (filter) => {
   try {
+    const { date, time, passenger, driver } = filter;
     let response = await axios.get(CARS_URL);
     response = await populateCars(response.data);
+    // console.log(response);
+    response = await filteringCar(response, { date, time, passenger, driver });
+    console.log(response.length);
     return response;
   } catch (error) {
     console.log(error);
@@ -65,8 +37,7 @@ const carsSlice = createSlice({
       .addCase(fetchCars.fulfilled, (state, action) => {
         state.status = "succeeded";
         let loadedCars = action.payload;
-        // let loadedCars = populateCars(action.payload);
-        state.cars = state.cars.concat(loadedCars);
+        state.cars = loadedCars;
       })
       .addCase(fetchCars.rejected, (state, action) => {
         state.status = "failed";
