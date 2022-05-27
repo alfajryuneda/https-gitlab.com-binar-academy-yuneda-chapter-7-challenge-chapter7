@@ -24,7 +24,7 @@ const CardCar = ({ cars }) => {
           <div>
             <p className="car-desc">
               {" "}
-              {car.description != ""
+              {car.description !== ""
                 ? car.description
                 : "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet mollitia exercitationem vel iure! Eligendi, delectus."}
             </p>

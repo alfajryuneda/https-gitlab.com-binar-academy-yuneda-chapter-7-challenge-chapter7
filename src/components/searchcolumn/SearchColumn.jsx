@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectAllCars,
-  getCarsError,
-  getCarsStatus,
-} from "../../redux/carsSlice";
+import { selectAllCars } from "../../redux/carsSlice";
 import { fetchCars } from "../../redux/carsSlice";
 
 import DarkBackground from "./DarkBackground";
@@ -14,14 +10,14 @@ import CardCar from "./CardCar";
 
 const SearchColumn = () => {
   const cars = useSelector(selectAllCars);
-  const carStatus = useSelector(getCarsStatus);
-  const error = useSelector(getCarsError);
+  // const carStatus = useSelector(getCarsStatus);
+  // const error = useSelector(getCarsError);
   const [driver, setDriver] = useState("withDriver");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [capacity, setCapacity] = useState("");
   const [showdata, setShowData] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  // const [isDark, setIsDark] = useState(false);
   const dispatch = useDispatch();
 
   const showBtn = [date.length > 0, time.length > 0].every(Boolean);
@@ -143,7 +139,7 @@ const SearchColumn = () => {
                 onClick={onSaveHandler}
                 onMouseLeave={(e) => {
                   e.preventDefault();
-                  setIsDark(false);
+                  // setIsDark(false);
                 }}
                 className="btn-rent-car w-100"
               >
@@ -154,7 +150,7 @@ const SearchColumn = () => {
         </div>
       </div>
       <ListCar>
-        {showdata && date.length == 0 && <p>Ngga boleh kosong</p>}
+        {showdata && date.length === 0 && <p>Ngga boleh kosong</p>}
         {date.length != 0 && time.length != 0 && cars && (
           <CardCar cars={cars} />
         )}
