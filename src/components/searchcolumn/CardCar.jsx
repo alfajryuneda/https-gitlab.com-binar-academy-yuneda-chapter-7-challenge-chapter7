@@ -1,10 +1,11 @@
 import React from "react";
+import "./Search.css";
 
 const CardCar = ({ cars }) => {
   return cars.map((car) => (
     <div key={car.id}>
       <div className="carContainer align-items-stretch">
-        <div className="card p-3">
+        <div className="card p-3 myCard">
           <div className="image-card">
             <img
               src={car.image}
@@ -46,7 +47,7 @@ const CardCar = ({ cars }) => {
               <i className="bi bi-calendar me-3"></i>Tahun {car.year}
             </span>
           </div>
-          <button className="btn btn-success"> Pilih Mobil</button>
+          <button className="btn btn-success btn-car"> Pilih Mobil</button>
         </div>
       </div>
     </div>

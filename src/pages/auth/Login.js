@@ -1,25 +1,11 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
-import { useEffect } from "react";
-import { gapi } from "gapi-script";
 
 const clientId =
   "462146044158-2fsqfmi1ag1kumnf2n4ld97ac529j7c3.apps.googleusercontent.com";
 
 const Login = (props) => {
-  // useEffect(() => {
-  //   function start() {
-  //     gapi.client.init({
-  //       clientId: clientId,
-  //       scope: "",
-  //     });
-  //   }
-
-  //   gapi.load("client", start);
-  // });
   const successGoogle = (response) => {
-    // console.log(response);
-    console.log(response.profileObj.name);
     const name = response.profileObj.name;
     const email = response.profileObj.email;
     localStorage.setItem("name", name);

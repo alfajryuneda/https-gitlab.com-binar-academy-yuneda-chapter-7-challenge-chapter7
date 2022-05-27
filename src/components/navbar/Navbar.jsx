@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = (props) => {
   let navStyle = "";
@@ -12,9 +14,9 @@ const Navbar = (props) => {
       <div className="container py-1">
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
-            <div className="navbar-brand logo text-white text-center">
-              YUNEDA
-            </div>
+            <Link to="/">
+              <button className="home-logo">YUNEDA</button>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -29,13 +31,17 @@ const Navbar = (props) => {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <div className="nav-link active" aria-current="page">
+                  <a
+                    className="nav-link active text-nav"
+                    aria-current="page"
+                    href="#services"
+                  >
                     <span>Our Services</span>
-                  </div>
+                  </a>
                 </li>
                 <li className="nav-item  ms-2">
                   <a
-                    className="nav-link active"
+                    className="nav-link active text-nav"
                     aria-current="page"
                     href="#why"
                   >
@@ -44,7 +50,7 @@ const Navbar = (props) => {
                 </li>
                 <li className="nav-item  ms-2">
                   <a
-                    className="nav-link active"
+                    className="nav-link active text-nav"
                     aria-current="page"
                     href="#testimonial"
                   >
@@ -53,17 +59,19 @@ const Navbar = (props) => {
                 </li>
                 <li className="nav-item  ms-2">
                   <a
-                    className="nav-link active"
+                    className="nav-link active text-nav"
                     aria-current="page"
                     href="#FAQ"
                   >
                     <span>FAQ</span>
                   </a>
                 </li>
-                <li className="nav-item  ms-2 mt-2">
-                  <a href="/cars" className="btn-rent-car text-decoration-none">
-                    Register
-                  </a>
+                <li className="nav-item  ms-2 ">
+                  <Link to="/register">
+                    <button className="btn-rent-car text-decoration-none">
+                      Register
+                    </button>
+                  </Link>
                 </li>
               </ul>
             </div>

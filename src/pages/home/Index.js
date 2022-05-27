@@ -12,33 +12,15 @@ import Footer from "../../components/footer/Footer";
 const Index = () => {
   return (
     <>
-      {/* START NAVBAR */}
       <Navbar fix={true} />
-      {/* Offcanvas for sidebar */}
       <Sidebar />
-      {/* END NAVBAR */}
-      {/* START HERO DESCRIPTION */}
       <Hero showbtn={true} />
-      {/* END HERO DESCRIPTION */}
-      {/* START OUR SERVICES */}
       <Services />
-      {/* END OUR SERVICES */}
-      {/* START WHY US */}
       <Why />
-      {/* END WHY US */}
-      {/* START OWL CAROUSEL */}
-
       {<Carousel />}
-      {/* END OWL CAROUSEL */}
-      {/* START BANNER */}
       <Banner />
-      {/* END BANNER */}
-      {/* START FAQ */}
       <Faq />
-      {/* END FAQ */}
-      {/* START FOOTER */}
       <Footer />
-      {/* END FOOTER */}
     </>
   );
 };

@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
         <div className="col-lg-3 col-md-6 col-12">
           <p>Copyright Binar 2022</p>
-          <div className="navbar-brand logo text-center text-white">YUNEDA</div>
+          <div className="home-logo text-center">YUNEDA</div>
         </div>
       </div>
     </div>

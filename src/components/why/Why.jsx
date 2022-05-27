@@ -14,7 +14,7 @@ const Why = () => {
             <div className="card-body">
               <img src="./assets/icon_complete.png" className="mb-3" alt="" />
               <h5 className="mb-3 fw-bold">Mobil Lengkap</h5>
-              <p className>
+              <p>
                 Tersedia banyak pilihan mobil, kondisi masih baru, bersih dan
                 terawat
               </p>
@@ -26,7 +26,7 @@ const Why = () => {
             <div className="card-body">
               <img src="./assets/icon_price.png" className="mb-3" alt="" />
               <h5 className="mb-3 fw-bold">Harga Murah</h5>
-              <p className>
+              <p>
                 Harga murah dan bersaing, bisa bandingkan harga kami dengan
                 rental mobil lain
               </p>
@@ -38,7 +38,7 @@ const Why = () => {
             <div className="card-body">
               <img src="./assets/icon_24hrs.png" className="mb-3" alt="" />
               <h5 className="mb-3 fw-bold">Layanan 24 Jam</h5>
-              <p className>
+              <p>
                 Siap melayani kebutuhan Anda selama 24 jam nonstop. Kami juga
                 tersedia di akhir minggu
               </p>
@@ -54,7 +54,7 @@ const Why = () => {
                 alt=""
               />
               <h5 className="mb-3 fw-bold">Sopir Profesional</h5>
-              <p className>
+              <p>
                 Sopir yang profesional, berpengalaman, jujur, ramah dan selalu
                 tepat waktu
               </p>

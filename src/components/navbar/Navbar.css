@@ -1,21 +1,15 @@
-#address p {
-  font-size: 14px;
+.text-nav {
+  font-weight: 500;
+  transition: 0.3s;
 }
-
-#fiture a {
-  font-size: 14px;
-  line-height: 20px;
-  color: #000000;
-}
-
-.social-media img {
-  margin-right: 8px;
+.text-nav:hover {
+  font-weight: 600;
+  transform: scale(1.1);
 }
 
 .home-logo {
   background-color: #0d28a6;
   color: white;
-  width: 100px;
   padding: 8px 12px;
   border-radius: 2px;
   font-style: normal;

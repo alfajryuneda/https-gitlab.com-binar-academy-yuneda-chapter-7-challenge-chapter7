@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -42,9 +43,9 @@ const Sidebar = () => {
             </a>
           </li>
           <li>
-            <a href="/cars" className="btn-rent-car">
-              Register
-            </a>
+            <Link to="/register">
+              <button className="btn-rent-car">Register</button>
+            </Link>
           </li>
         </ul>
       </div>

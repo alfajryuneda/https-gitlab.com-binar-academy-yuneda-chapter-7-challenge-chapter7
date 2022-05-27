@@ -41,9 +41,9 @@ class Carousel extends React.Component {
             },
           }}
         >
-          <CardCarousel />
-          <CardCarousel />
-          <CardCarousel />
+          <CardCarousel img={"./assets/img_photo.png"} />
+          <CardCarousel img={"./assets/img_photo1.png"} />
+          <CardCarousel img={"./assets/img_photo1.png"} />
         </OwlCarousel>
       </>
     );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllCars } from "../../redux/carsSlice";
+import { selectAllCars, getCarsStatus } from "../../redux/carsSlice";
 import { fetchCars } from "../../redux/carsSlice";
 
 import DarkBackground from "./DarkBackground";
@@ -10,7 +10,7 @@ import CardCar from "./CardCar";
 
 const SearchColumn = () => {
   const cars = useSelector(selectAllCars);
-  // const carStatus = useSelector(getCarsStatus);
+  const carStatus = useSelector(getCarsStatus);
   // const error = useSelector(getCarsError);
   const [driver, setDriver] = useState("withDriver");
   const [date, setDate] = useState("");
@@ -150,7 +150,11 @@ const SearchColumn = () => {
         </div>
       </div>
       <ListCar>
-        {showdata && date.length === 0 && <p>Ngga boleh kosong</p>}
+        {showdata && date.length === 0 && (
+          <div class="alert alert-warning w-100 h-100 text-center" role="alert">
+            <h5 style={{ fontWeight: "bold" }}>Input Date and Time first !!</h5>
+          </div>
+        )}
         {date.length != 0 && time.length != 0 && cars && (
           <CardCar cars={cars} />
         )}

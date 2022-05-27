@@ -16,9 +16,7 @@ export const fetchCars = createAsyncThunk("cars/fetchCars", async (filter) => {
     const { date, time, passenger, driver } = filter;
     let response = await axios.get(CARS_URL);
     response = await populateCars(response.data);
-    // console.log(response);
     response = await filteringCar(response, { date, time, passenger, driver });
-    console.log(response.length);
     return response;
   } catch (error) {
     console.log(error);

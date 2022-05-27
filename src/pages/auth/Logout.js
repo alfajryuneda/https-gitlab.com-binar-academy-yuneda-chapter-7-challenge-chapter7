@@ -5,8 +5,6 @@ const clientId =
 
 function Logout(props) {
   const onSuccess = (e) => {
-    console.log(e);
-    console.log("Logout Success");
     localStorage.setItem("name", "");
     localStorage.setItem("email", "");
     props.onLogout();

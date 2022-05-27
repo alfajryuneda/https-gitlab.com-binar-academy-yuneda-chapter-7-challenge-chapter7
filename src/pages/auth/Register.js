@@ -7,6 +7,7 @@ import { gapi } from "gapi-script";
 import Login from "./Login";
 import Logout from "./Logout";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Register.css";
 const clientId =
   "462146044158-2fsqfmi1ag1kumnf2n4ld97ac529j7c3.apps.googleusercontent.com";
 
@@ -52,7 +53,7 @@ const Register = () => {
       <div className="container" style={{ marginTop: "65px" }}>
         <div className="row justify-content-center">
           <div className="col-6">
-            <div className="card p-5 mt-5 pt-3" style={styleCard}>
+            <div className="card p-5 mt-5 pt-3 myCard" style={styleCard}>
               <h2 className="text-center" style={{ fontWeight: "600" }}>
                 Binar Car Rental
               </h2>
@@ -64,8 +65,6 @@ const Register = () => {
                 <div className="col-8 d-flex justify-content-center align-content-center">
                   <div
                     style={{
-                      //   maxHeight: "200px",
-                      //   maxWidth: "200px",
                       margin: "auto",
                     }}
                   >

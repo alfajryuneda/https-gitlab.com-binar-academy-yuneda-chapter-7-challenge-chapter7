@@ -1,16 +1,11 @@
 import React from "react";
 
-const CardCarousel = () => {
+const CardCarousel = ({ img }) => {
   return (
     <div className="item p-4 ">
       <div className="row justify-content-center align-items-center ">
         <div className="col-3">
-          <img
-            src="./assets/img_photo1.png"
-            alt=""
-            style={{ width: "80px" }}
-            className="mx-auto"
-          />
+          <img src={img} alt="" style={{ width: "80px" }} className="mx-auto" />
         </div>
         <div className="col-9">
           <i

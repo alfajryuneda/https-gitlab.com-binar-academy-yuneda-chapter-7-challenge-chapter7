@@ -2,7 +2,7 @@ import React from "react";
 
 const Services = () => {
   return (
-    <div id="serv" className="container mt-5 pt-5">
+    <div id="services" className="container mt-5 pt-5">
       <div className="row justify-content-around pt-4">
         <div className="col-lg-6">
           <img className="img-fluid" src="./assets/service.png" alt="" />
@@ -11,7 +11,7 @@ const Services = () => {
           <h2 className="fw-bold">
             Best Car Rental for any kind of trip in (Lokasimu)!
           </h2>
-          <p className>
+          <p>
             Sewa mobil di (Lokasimu) bersama Binar Car Rental jaminan harga
             lebih murah dibandingkan yang lain, kondisi mobil baru, serta
             kualitas pelayanan terbaik untuk perjalanan wisata, bisnis, wedding,
