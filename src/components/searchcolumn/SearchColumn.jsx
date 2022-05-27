@@ -24,40 +24,31 @@ const SearchColumn = () => {
 
   const driverHandler = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setDriver(e.target.value);
     setShowData(false);
   };
   const dateHandler = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    if (e.target.value.leng == 0) {
-      console.log("kosong bro");
-    }
     setDate(e.target.value);
     setShowData(false);
   };
   const timeHandler = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setTime(e.target.value);
     setShowData(false);
   };
   const capacityHandler = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setCapacity(e.target.value);
     setShowData(false);
   };
   const onSaveHandler = () => {
     setShowData(true);
     const passenger = capacity ? capacity : "0";
-    console.log(driver);
     const filter = { date, time, passenger, driver };
     if (date.length > 0) {
       dispatch(fetchCars(filter));
     }
-    // console.log(error);
   };
   return (
     <>
@@ -154,7 +145,10 @@ const SearchColumn = () => {
       </div>
       <ListCar>
         {showdata && date.length === 0 && (
-          <div class="alert alert-warning w-100 h-100 text-center" role="alert">
+          <div
+            className="alert alert-warning w-100 h-100 text-center"
+            role="alert"
+          >
             <h5 style={{ fontWeight: "bold" }}>Input Date and Time first !!</h5>
           </div>
         )}

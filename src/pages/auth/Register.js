@@ -36,11 +36,9 @@ const Register = () => {
     setLogin(true);
     setName(name);
     setEmail(email);
-    console.log("Berhasil mindahin");
   };
   const handlerStateLogout = () => {
     setLogin(false);
-    console.log("Berhasil mindahin");
   };
   return (
     <>
