@@ -31,6 +31,9 @@ const SearchColumn = () => {
   const dateHandler = (e) => {
     e.preventDefault();
     console.log(e.target.value);
+    if (e.target.value.leng == 0) {
+      console.log("kosong bro");
+    }
     setDate(e.target.value);
     setShowData(false);
   };
@@ -51,7 +54,7 @@ const SearchColumn = () => {
     const passenger = capacity ? capacity : "0";
     console.log(driver);
     const filter = { date, time, passenger, driver };
-    if (showBtn) {
+    if (date.length > 0) {
       dispatch(fetchCars(filter));
     }
     // console.log(error);
